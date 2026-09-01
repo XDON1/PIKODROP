@@ -51,10 +51,14 @@
 
 ---
 
-## 🚀 Cara Menjalankan Projek
+## 🚀 Demo & Cara Menjalankan
 
-Nggak perlu *install* dependencies yang ribet, projek ini murni *client-side*[cite: 1, 2]!
+Projek ini murni *client-side*, jadi lu bisa langsung nyobain aplikasinya secara online tanpa perlu install apa-apa!
 
-1. **Clone repository ini:**
-   ```bash
-   git clone [https://github.com/XDON1/PIKODROP.git](https://github.com/XDON1/PIKODROP.git)
+* 🌐 **Live Demo:** [pikodrop.vercel.app](https://pikodrop.vercel.app) *(Ganti dengan link Vercel lu)*
+
+---
+
+## 👨‍💻 Pembuat
+
+Projek ini dibuat dan dikembangkan sepenuhnya oleh **Gadot** ([XDON1](https://github.com/XDON1)).
