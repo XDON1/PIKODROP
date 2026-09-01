@@ -55,7 +55,7 @@
 
 Projek ini murni *client-side*, jadi lu bisa langsung nyobain aplikasinya secara online tanpa perlu install apa-apa!
 
-* 🌐 **Live Demo:** [pikodrop.vercel.app](https://pikodrop.vercel.app) *(Ganti dengan link Vercel lu)*
+* 🌐 **Live Demo:** [pikodrop.vercel.app](https://pikodrop.vercel.app/) 
 
 ---
 
