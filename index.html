@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PIKO DROP - Decision Helper</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom CSS (animasi & tambahan) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#100e0b] text-gray-100 min-h-screen antialiased">
+
+  <!-- Background layers (Vercel Edge - Aura) -->
+  <div class="relative overflow-hidden min-h-screen flex flex-col">
+    <!-- Layer 1 -->
+    <div class="absolute inset-0 pointer-events-none blur-[63px] md:blur-[90px] opacity-90"
+         style="background: radial-gradient(ellipse 120% 145% at 50% -50%, rgba(0,0,0,0) 58%, rgba(89, 102, 166, 245) 76%, rgba(0,0,0,0) 84%); mix-blend-mode: normal" aria-hidden="true"></div>
+    <!-- Layer 2 -->
+    <div class="absolute inset-0 pointer-events-none blur-[200px] md:blur-[260px]"
+         style="background: radial-gradient(ellipse 120% 145% at 50% -50%, rgba(0,0,0,0) 50%, rgba(84, 89, 88, 0.35) 78%, rgba(0,0,0,0) 100%); mix-blend-mode: normal" aria-hidden="true"></div>
+    <!-- Layer 3 -->
+    <div class="absolute inset-0 pointer-events-none blur-[30px] md:blur-[43px] opacity-75"
+         style="background: radial-gradient(ellipse 120% 145% at 50% -50%, rgba(0,0,0,0) 82.5%, #c13acb 83.5%, rgba(0,0,0,0) 84.5%); mix-blend-mode: screen" aria-hidden="true"></div>
+
+    <!-- Content wrapper -->
+    <div class="relative z-[1] flex flex-col flex-1">
+
+      <!-- Navbar -->
+      <nav class="sticky top-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <img src="PIKODROP logo.svg" alt="PIKO DROP Logo" class="h-10 w-auto object-contain"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+            <span class="text-xl font-bold tracking-tight hidden" style="display:none;">PIKO</span>
+          </div>
+          <button id="btnCaraPakai" class="px-4 py-2 text-sm font-medium bg-white/10 hover:bg-white/20 rounded-lg transition-colors touch-manipulation">
+            Cara Pakai
+          </button>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="flex-1 w-full max-w-5xl mx-auto px-4 py-6 md:py-10">
+        <!-- Grid: 1 kolom (mobile) → 2 kolom (md+) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
+
+          <!-- Kolom Kiri: Input & Daftar Pilihan -->
+          <section class="space-y-5 md:space-y-6">
+            <div>
+              <h2 class="text-2xl font-bold mb-1">Masukkan Pilihan</h2>
+              <p class="text-gray-300 text-sm">Tulis pilihanmu lalu tekan tombol + untuk menambahkan.</p>
+            </div>
+
+            <!-- Input + Tombol Tambah -->
+            <div class="flex items-center gap-3">
+              <input id="opsiInput" type="text" placeholder="Contoh: Makan bakso"
+                     class="flex-1 bg-white/10 px-4 py-3 text-white placeholder-gray-400 rounded-lg border-2 border-white/20 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/30 outline-none transition-all duration-200"
+                     autocomplete="off" />
+              <button id="btnTambah" title="Tambah Pilihan"
+                      class="group cursor-pointer outline-none hover:rotate-90 duration-300 shrink-0 touch-manipulation"
+                      aria-label="Tambah pilihan">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24"
+                     class="stroke-gray-300 fill-none group-hover:fill-gray-100 group-active:stroke-white group-active:fill-gray-400 group-active:duration-0 duration-300">
+                  <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke-width="1.5" />
+                  <path d="M8 12H16" stroke-width="1.5" />
+                  <path d="M12 16V8" stroke-width="1.5" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Daftar Pilihan -->
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Daftar Pilihan</h3>
+              <ul id="daftarOpsi" class="space-y-2 max-h-[240px] overflow-y-auto pr-1">
+                <!-- Akan di-render oleh JavaScript -->
+                <li class="bg-white/5 px-3 py-2 rounded-lg text-gray-400 text-center border border-white/10">
+                  Belum ada pilihan. Yuk tambahkan!
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Kolom Kanan: Mode Keputusan & Hasil -->
+          <section class="space-y-5 md:space-y-6">
+            <div>
+              <h2 class="text-2xl font-bold mb-3 text-center">Pilih Mode Keputusan</h2>
+              <div class="grid grid-cols-2 gap-4">
+                <button class="mode-btn group bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-400 hover:to-blue-600 text-white py-6 rounded-2xl font-bold text-lg shadow-lg shadow-blue-900/30 transition-all duration-300 transform hover:scale-105 active:scale-95 flex flex-col items-center justify-center gap-2 touch-manipulation"
+                        data-mode="dadu">
+                  <span class="text-4xl">🎲</span>
+                  <span>Dadu</span>
+                </button>
+                <button class="mode-btn group bg-gradient-to-br from-purple-500 to-purple-700 hover:from-purple-400 hover:to-purple-600 text-white py-6 rounded-2xl font-bold text-lg shadow-lg shadow-purple-900/30 transition-all duration-300 transform hover:scale-105 active:scale-95 flex flex-col items-center justify-center gap-2 touch-manipulation"
+                        data-mode="pairwise">
+                  <span class="text-4xl">⚔️</span>
+                  <span>Pairwise</span>
+                </button>
+              </div>
+              <p class="text-xs text-gray-400 mt-3 text-center">Klik salah satu mode untuk mulai mengambil keputusan.</p>
+            </div>
+
+            <!-- Area Hasil -->
+            <div id="areaHasil" class="bg-white/5 rounded-2xl p-6 border border-white/10 min-h-[180px] flex flex-col items-center justify-center text-center shadow-xl transition-all duration-300">
+              <p class="text-gray-400">Hasil akan muncul di sini.</p>
+            </div>
+          </section>
+
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-white/10 py-6 mt-6 md:mt-10">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col items-center gap-3">
+          <div class="flex items-center gap-2">
+            <img src="PIKODROP logo.svg" alt="PIKO DROP Logo" class="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';" />
+            <span class="text-sm font-semibold text-gray-400 hidden" style="display:none;">PIKO DROP</span>
+          </div>
+          <a href="https://github.com/username/piko-drop" target="_blank" rel="noopener noreferrer"
+             class="text-gray-400 hover:text-white transition-colors touch-manipulation" title="Lihat proyek di GitHub" aria-label="GitHub repository">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2.01-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.11-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.41-2.68 5.38-5.23 5.67.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.21.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
+            </svg>
+          </a>
+          <p class="text-sm text-gray-400 text-center">
+            © 2026. Made with ❤️ by
+            <a href="https://github.com/XDON1" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 transition-colors">XDON1</a>
+          </p>
+        </div>
+      </footer>
+
+    </div><!-- end content wrapper -->
+  </div><!-- end background wrapper -->
+
+  <!-- Modal Cara Pakai -->
+  <div id="modalCaraPakai" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4 backdrop-blur-sm">
+    <div class="bg-gray-900 rounded-2xl shadow-2xl p-6 w-full max-w-md space-y-4 border border-white/10 fade-in">
+      <h3 class="text-xl font-bold">Cara Pakai PIKO DROP</h3>
+      <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+        <li>Ketik pilihan keputusanmu di kolom input.</li>
+        <li>Klik tombol <strong>+</strong> untuk menambahkan ke daftar.</li>
+        <li>Ulangi hingga semua pilihan terkumpul.</li>
+        <li>Pilih mode <strong>🎲 Dadu</strong> atau <strong>⚔️ Pairwise</strong>.</li>
+        <li>Hasil akan muncul secara instan.</li>
+      </ol>
+      <button id="btnTutupModal" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-white font-medium transition-colors touch-manipulation">
+        Mengerti
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>
