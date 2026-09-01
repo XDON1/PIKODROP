@@ -3,7 +3,7 @@
   <!-- Logo Projects -->
   <img src="PIKODROP logo.svg" alt="PIKO DROP Logo" width="120" />
 
-  # 🎲 PIKO DROP — Decision Helper
+  # PIKO DROP — Decision Helper
 
   **Solusi instan & seru buat lu yang suka bingung ngambil keputusan!**
 
@@ -11,12 +11,6 @@
   <p align="center">
     <a href="https://github.com/XDON1/PIKODROP/stargazers">
       <img src="https://img.shields.io/github/stars/XDON1/PIKODROP?style=for-the-badge&color=8A2BE2" alt="Stars Badge" />
-    </a>
-    <a href="https://github.com/XDON1/PIKODROP/network/members">
-      <img src="https://img.shields.io/github/forks/XDON1/PIKODROP?style=for-the-badge&color=00BFFF" alt="Forks Badge" />
-    </a>
-    <a href="https://github.com/XDON1/PIKODROP/issues">
-      <img src="https://img.shields.io/github/issues/XDON1/PIKODROP?style=for-the-badge&color=FF4500" alt="Issues Badge" />
     </a>
     <a href="https://github.com/XDON1/PIKODROP/blob/main/LICENSE">
       <img src="https://img.shields.io/github/license/XDON1/PIKODROP?style=for-the-badge&color=GREEN" alt="License Badge" />
