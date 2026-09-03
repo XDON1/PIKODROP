@@ -59,6 +59,3 @@ Projek ini murni *client-side*, jadi lu bisa langsung nyobain aplikasinya secara
 
 ---
 
-## 👨‍💻 Pembuat
-
-Projek ini dibuat dan dikembangkan sepenuhnya oleh **Gadot** ([XDON1](https://github.com/XDON1)).
