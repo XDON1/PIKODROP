@@ -27,22 +27,22 @@
 
 ---
 
-## 📌 Deskripsi
+## Deskripsi
 
 **PIKO DROP** adalah web app simpel berbasis JavaScript & Tailwind CSS yang dirancang khusus buat ngebantu lu nentukan pilihan saat dilanda kebingungan. Mau milih tempat makan, tempat nongkrong, atau keputusan sulit lainnya? Tinggal masukkan opsinya, pilih modenya, dan biarkan sistem yang menentukan!
 
 ---
 
-## 🔥 Fitur Utama
+## Fitur Utama
 
-- 🎲 **Mode Dadu (Randomizer):** Mengacak semua pilihan lu secara otomatis ala lemparan dadu dengan animasi seru!
-- ⚔️ **Mode Pairwise (Eliminasi Head-to-Head):** Diadu 1 vs 1 satu per satu sampai nemu satu pemenang mutlak!
-- ⚡ **Desain Modern & Responsive:** Didukung *Vercel Edge - Aura Background* dan Tailwind CSS yang rapi di layar HP maupun PC.
-- 📝 **Interaktif & Cepat:** Tambah dan hapus daftar opsi pilihan secara *real-time*.
+-  **Mode Dadu (Randomizer):** Mengacak semua pilihan lu secara otomatis ala lemparan dadu dengan animasi seru!
+-  **Mode Pairwise (Eliminasi Head-to-Head):** Diadu 1 vs 1 satu per satu sampai nemu satu pemenang mutlak!
+-  **Desain Modern & Responsive:** Didukung *Vercel Edge - Aura Background* dan Tailwind CSS yang rapi di layar HP maupun PC.
+-  **Interaktif & Cepat:** Tambah dan hapus daftar opsi pilihan secara *real-time*.
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 * **HTML5** — Struktur web
 * **Tailwind CSS (via CDN)** — Styling UI & Grid layout
@@ -51,9 +51,9 @@
 
 ---
 
-## 🚀 Demo & Cara Menjalankan
+## Demo
 
-Projek ini murni *client-side*, jadi lu bisa langsung nyobain aplikasinya secara online tanpa perlu install apa-apa!
+Projek ini murni *client-side*, jadi bisa langsung nyobain aplikasinya secara online tanpa perlu install apa-apa!
 
 * 🌐 **Live Demo:** [pikodrop.vercel.app](https://pikodrop.vercel.app/) 
 
